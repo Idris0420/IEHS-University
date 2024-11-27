@@ -8,7 +8,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import back from "./assets/back.png"
 
 function EnrolledStudent(){
-
+    const navigate = useNavigate(); 
     const loc = useLocation();
     const sub = loc.state;
     const [students, setStudents] = useState([]);
