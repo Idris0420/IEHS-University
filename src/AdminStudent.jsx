@@ -41,13 +41,13 @@ function AdminStudent(){
     const navigate = useNavigate();
 
     return(
-        <div className="h-[100vh]">
+        <div className="min-h-[100vh]">
             <div className="flex items-center px-10  h-[15vh] w-[100vw]">
                 <img className='h-[70%]' src={school} alt="" />
                 <h1>INTERNATIONAL ELEMENTARY HIGH SCHOOL UNIVERSITY</h1>
             </div>
             
-            <div className='px-7 pt-5 h-[85vh] w-[100vw] bg-[#1a2d31] flex justify-center'>
+            <div className='px-7 pt-5 min-h-[85vh] w-[100vw] bg-[#1a2d31] flex justify-center'>
                 
                 <div className=''>
                     <button className='flex flex-row bg-[#dbdbdb] rounded-full w-[90px] px-2 pr-4 justify-between  items-center font-medium' onClick={() => {navigate("/admin")}}>
@@ -61,7 +61,7 @@ function AdminStudent(){
                             Add Student
                         </button>
                     </div>
-                    <table className='border w-[94vw] text-center'>
+                    <table className='border w-[94vw] text-center mb-[100px]'>
                         <thead className='border'>
                             <tr className='text-white'>
                                 <th className='border-2 py-1'>Student Number</th>
@@ -69,7 +69,7 @@ function AdminStudent(){
                                 <th className='border-2 py-1'>Email</th>
                             </tr>
                         </thead>
-                        <tbody className='tableData'>
+                        <tbody className='max-h-[100px]'>
                             {students.map((student) => {
                                 return( 
                                 <tr className='odd:bg-white even:text-white' key={student.id}>

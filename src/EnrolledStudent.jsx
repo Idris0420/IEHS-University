@@ -46,10 +46,6 @@ function EnrolledStudent(){
                     </button>
                     <div className="flex items-center justify-between mb-3">
                         <h1 className='font-bold text-xl mb-2 text-white mt-5'>Students enrolled in {sub.course}</h1>
-                        <button className="gap-2 bg-[#ffffff] flex items-center justify-center py-2 px-3 rounded-full" onClick={() => {navigate("/addStudent")}}>
-                            <img className="h-[35px]" src={addIcon} alt="" />
-                            Add Student
-                        </button>
                     </div>
                     <table className='border w-[94vw] text-center'>
                         <thead className='border'>
