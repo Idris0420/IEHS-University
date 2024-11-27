@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import school from './assets/school.png'
+import school from './assets/School.png'
 import Back from './Back';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { db } from './firebase-config';
