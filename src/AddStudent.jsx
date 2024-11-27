@@ -3,18 +3,24 @@ import school from './assets/school.png'
 import Back from './Back';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { db } from './firebase-config';
+import back from './assets/back.png'
+import { useNavigate } from 'react-router-dom';
+
 function AddStudent(){
     const studentCollectionRef = collection(db, "Students");
-
+    const navigate = useNavigate();
     const createStudent = async() => {
         await addDoc(studentCollectionRef, {Email: currEmail, StudentName: currName, StudentNumber: currStudNum, Program: currProg});
-        alert("Student successfully added!")
+        alert("Student successfully added!");
+        navigate("/adminStudent")
     }
 
     const [currName, setCurrName] = useState("");
     const [currStudNum, setCurrStudNum] = useState("");
     const [currEmail, setCurrEmail] = useState("");
-    const [currProg, setCurrProg] = useState("");
+    const [currProg, setCurrProg] = useState("Bachelor of Science in Information Technology");
+
+
 
     return(
         <>
@@ -25,7 +31,10 @@ function AddStudent(){
             <div className='pt-[50px] flex flex-col items-center justify-center h-[85vh] w-[100vw] bg-[#1a2d31]'>
                 <div className='h-[100%] flex flex-col'>
                 <div className='flex items-center mb-5 '>
-                    <Back />
+                <button className='flex flex-row bg-[#dbdbdb] rounded-full w-[90px] px-2 pr-4 justify-between  items-center font-medium' onClick={() => {navigate("/adminStudent")}}>
+                    <img className='h-[20px]' src={back} alt="" />
+                    Back
+                </button>
                     <div className='flex-grow flex justify-center'>
                         <h1 className='text-white font-bold text-xl'>Add Student</h1>
                     </div>
@@ -41,7 +50,11 @@ function AddStudent(){
                             <input type="text" onChange={e => setCurrName(e.target.value)} className='w-[80%] h-[25px]'/>
                             <input type="text" onChange={e => setCurrStudNum(e.target.value)} className='w-[80%] h-[25px]'/>
                             <input type="text" onChange={e => setCurrEmail(e.target.value)} className='w-[80%] h-[25px]'/>
-                            <input type="text" onChange={e => setCurrProg(e.target.value)} className='w-[80%] h-[25px]'/>
+                            <select name="options" className='w-[80%] h-[25px]' onChange={e => setCurrProg(e.target.value)}>
+                                <option value="Bachelor of Science in Information Technology">BSIT (Bachelor of Science in Information Technology)</option>
+                                <option value="Bachelor of Science in Computer Science">BSCS (Bachelor of Science in Computer Science)</option>
+                                <option value="Bachelor of Science in Computer Engineering">BSCPE (Bachelor of Science in Computer Engineering)</option>
+                            </select>
                         </div>
                     </div>
                     <button className='bg-green-500 w-fit self-end px-5 py-2 rounded-full font-bold' onClick={createStudent}>+ Add Student</button>

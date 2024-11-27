@@ -7,35 +7,33 @@ import addIcon from './assets/addIcon.png'
 import { useNavigate } from "react-router-dom";
 import back from "./assets/back.png"
 
-function AdminStudent(){
+function AdminProfessors(){
+    const profCollectionRef = collection(db, "Professors");
 
-    const StudentCollectionRef = collection(db, "Students");
-
-    const [students, setStudents] = useState([])
+    const [professors, setProfessors] = useState([])
     useEffect(() => {
 
-    const getSubjects = async() => {
-        const data = await getDocs(StudentCollectionRef);
-        setStudents(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    const getProfs = async() => {
+        const data = await getDocs(profCollectionRef);
+        setProfessors(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
 
-    getSubjects()
+    getProfs()
 
-    const unsubscribe = onSnapshot(StudentCollectionRef, (snapshot) => {
-        const studentsList = snapshot.docs.map((doc) => ({
+    const unsubscribe = onSnapshot(profCollectionRef, (snapshot) => {
+        const profList = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
         }));
-        setStudents(studentsList); // Update state with the latest data
+        setProfessors(profList); 
     });
 
-    // Clean up the listener on component unmount
     return () => unsubscribe();
     }, []);
 
-    const deleteStudent = async (id) => {
-        const studentDoc = doc(db, "Students", id);
-        await deleteDoc(studentDoc);
+    const deleteProf = async (id) => {
+        const profDoc = doc(db, "Professors", id);
+        await deleteDoc(profDoc);
     } 
 
     const navigate = useNavigate();
@@ -55,30 +53,30 @@ function AdminStudent(){
                         Back
                     </button>
                     <div className="flex items-center justify-between mb-3">
-                        <h1 className='font-bold text-xl mb-2 text-white mt-5'>Students</h1>
-                        <button className="gap-2 bg-[#ffffff] flex items-center justify-center py-2 px-3 rounded-full" onClick={() => {navigate("/addStudent")}}>
+                        <h1 className='font-bold text-xl mb-2 text-white mt-5'>Courses</h1>
+                        <button className="gap-2 bg-[#ffffff] flex items-center justify-center py-2 px-3 rounded-full" onClick={() => {navigate("/addProfessors")}}>
                             <img className="h-[35px]" src={addIcon} alt="" />
-                            Add Student
+                            Add Professor
                         </button>
                     </div>
                     <table className='border w-[94vw] text-center'>
                         <thead className='border'>
                             <tr className='text-white'>
-                                <th className='border-2 py-1'>Student Number</th>
-                                <th className='border-2 py-1'>Student Name</th>
-                                <th className='border-2 py-1'>Email</th>
+                                <th className='border-2 py-1'>Professor Name</th>
+                                <th className='border-2 py-1'>Professor Email</th>
+                                <th className='border-2 py-1'>Subject</th>
                             </tr>
                         </thead>
                         <tbody className='tableData'>
-                            {students.map((student) => {
+                            {professors.map((prof) => {
                                 return( 
-                                <tr className='odd:bg-white even:text-white' key={student.id}>
-                                    <td className='border-2 py-1'>{student.StudentNumber}</td>
-                                    <td className='border-2 py-1'>{student.StudentName}</td>
-                                    <td className='border-2 py-1'>{student.Email}</td>
+                                <tr className='odd:bg-white even:text-white' key={prof.id}>
+                                    <td className='border-2 py-1'>{prof.Name}</td>
+                                    <td className='border-2 py-1'>{prof.Email}</td>
+                                    <td className='border-2 py-1'>{prof.Subject}</td>
                                     <td className='w-[200px]'> 
                                     <button className='bg-green-500 text-black px-2 rounded-sm mr-4'>Check</button> 
-                                    <button className='bg-red-500 text-black px-2 rounded-sm' onClick={() => deleteStudent(student.id)}>Delete</button> 
+                                    <button className='bg-red-500 text-black px-2 rounded-sm' onClick={() => deleteProf(prof.id)}>Delete</button> 
                                     </td>
                                 </tr>);
                             })}
@@ -88,7 +86,7 @@ function AdminStudent(){
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default AdminStudent
+export default AdminProfessors
