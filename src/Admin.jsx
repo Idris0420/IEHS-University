@@ -1,5 +1,5 @@
 import school from './assets/School.png'
-import student from './assets/student.png'
+import student from './assets/Student.png'
 import teacher from './assets/teacher.png'
 import { useNavigate } from 'react-router-dom';
 function Admin(){
