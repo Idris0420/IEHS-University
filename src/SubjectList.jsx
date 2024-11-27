@@ -20,7 +20,9 @@ function SubjectList(){
 
     const navigate = useNavigate();
 
-    
+    const checkEnrolled = (course) => {
+        navigate("/checkEnrolled", {state: {course}})
+    } 
     return(
         <div className="h-[100vh]">
             <div className="flex items-center px-10  h-[15vh] w-[100vw]">
@@ -43,7 +45,7 @@ function SubjectList(){
                             return(
                             <tr className='odd:bg-white even:text-white' key={index}>
                                 <td className='border-2 py-1'>{subject.SubName}</td>
-                                <td className='w-[200px]'> <button className='bg-green-500 text-black px-2 rounded-sm'>Check Students</button> </td>
+                                <td className='w-[200px]'> <button className='bg-green-500 text-black px-2 rounded-sm' onClick={() => checkEnrolled(subject.SubName)}>Check Students</button> </td>
                             </tr>
                         )})}
     

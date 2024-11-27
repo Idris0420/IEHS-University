@@ -7,7 +7,7 @@ import NotFound from "./NotFound";
 import AdminProfessors from "./AdminProfessors";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddProf from "./AddProf";
-
+import EnrolledStudent from "./EnrolledStudent";
 
 
 function App() {
@@ -40,6 +40,10 @@ function App() {
     {
       path: "/addProfessors",
       element: <AddProf/>
+    },
+    {
+      path: "/checkEnrolled",
+      element: <EnrolledStudent/>
     }
   ]);
 
