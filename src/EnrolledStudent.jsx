@@ -40,7 +40,7 @@ function EnrolledStudent(){
             <div className='px-7 pt-5 h-[85vh] w-[100vw] bg-[#1a2d31] flex justify-center'>
                 
                 <div className=''>
-                    <button className='flex flex-row bg-[#dbdbdb] rounded-full w-[90px] px-2 pr-4 justify-between  items-center font-medium' onClick={() => {navigate("/admin")}}>
+                    <button className='flex flex-row bg-[#dbdbdb] rounded-full w-[90px] px-2 pr-4 justify-between  items-center font-medium' onClick={() => {navigate("/courses")}}>
                         <img className='h-[20px]' src={back} alt="" />
                         Back
                     </button>
