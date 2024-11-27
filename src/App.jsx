@@ -13,7 +13,7 @@ import EnrolledStudent from "./EnrolledStudent";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/home",
+      path: "/",
       element: <Login/>,
       errorElement: <NotFound/>
     },
