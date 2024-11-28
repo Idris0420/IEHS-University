@@ -39,13 +39,13 @@ function AdminProfessors(){
     const navigate = useNavigate();
 
     return(
-        <div className="h-[100vh]">
+        <div className="min-h-[100vh]">
             <div className="flex items-center px-10  h-[15vh] w-[100vw]">
                 <img className='h-[70%]' src={school} alt="" />
                 <h1>INTERNATIONAL ELEMENTARY HIGH SCHOOL UNIVERSITY</h1>
             </div>
             
-            <div className='px-7 pt-5 h-[85vh] w-[100vw] bg-[#1a2d31] flex justify-center'>
+            <div className='px-7 pt-5 min-h-[85vh] w-[100vw] bg-[#1a2d31] flex justify-center'>
                 
                 <div className=''>
                     <button className='flex flex-row bg-[#dbdbdb] rounded-full w-[90px] px-2 pr-4 justify-between  items-center font-medium' onClick={() => {navigate("/admin")}}>
