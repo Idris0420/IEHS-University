@@ -10,7 +10,64 @@ function AddStudent(){
     const studentCollectionRef = collection(db, "Students");
     const navigate = useNavigate();
     const createStudent = async() => {
-        await addDoc(studentCollectionRef, {Email: currEmail, StudentName: currName, StudentNumber: currStudNum, Program: currProg});
+        let subjects = [];
+        if (currProg === "Bachelor of Science in Information Technology"){
+            subjects = [
+                {
+                    subject: "Web Development and Design",
+                    grade: null
+                },
+                {
+                    subject: "IT Infrastructure and System Administration",
+                    grade: null
+                },
+                {
+                    subject: "Database Management Systems",
+                    grade: null
+                }
+            ];
+        }
+
+        else if (currProg === "Bachelor of Science in Computer Science"){
+            subjects = [
+                {
+                    subject: "Data Structures and Algorithms",
+                    grade: null
+                },
+                {
+                    subject: "Software Engineering",
+                    grade: null
+                },
+                {
+                    subject: "Artificial Intelligence",
+                    grade: null
+                }
+            ]
+        }
+        
+
+
+        else if (currProg === "Bachelor of Science in Computer Engineering"){
+            subjects = [
+                {
+                    subject: "Computer Architecture and Organization",
+                    grade: null
+                },
+                {
+                    subject: "Embedded Systems",
+                    grade: null
+                },
+                {
+                    subject: "Digital Signal Processing",
+                    grade: null
+                },{
+                    subject: "GWA",
+                    grade: null
+                }
+            ]
+        }
+        
+        await addDoc(studentCollectionRef, {Email: currEmail, StudentName: currName, StudentNumber: currStudNum, Program: currProg, Subjects: subjects});
         alert("Student successfully added!");
         navigate("/adminStudent")
     }

@@ -8,7 +8,8 @@ import AdminProfessors from "./AdminProfessors";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddProf from "./AddProf";
 import EnrolledStudent from "./EnrolledStudent";
-
+import TeacherProfile from "./TeacherProfile";
+import StudentProfile from "./StudentProfile";
 
 function App() {
   const router = createBrowserRouter([
@@ -44,6 +45,14 @@ function App() {
     {
       path: "/checkEnrolled",
       element: <EnrolledStudent/>
+    },
+    {
+      path: "/teacherProfile",
+      element: <TeacherProfile/>
+    },
+    {
+      path: "/studentProfile",
+      element: <StudentProfile/>
     }
   ]);
 

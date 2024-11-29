@@ -40,6 +40,11 @@ function AdminStudent(){
 
     const navigate = useNavigate();
 
+    const checkStudent = (idRef) => {
+        
+        navigate("/studentProfile", {state: {id: idRef}});
+    }
+
     return(
         <div className="min-h-[100vh]">
             <div className="flex items-center px-10  h-[15vh] w-[100vw]">
@@ -69,7 +74,7 @@ function AdminStudent(){
                                 <th className='border-2 py-1'>Email</th>
                             </tr>
                         </thead>
-                        <tbody className='max-h-[100px]'>
+                        <tbody>
                             {students.map((student) => {
                                 return( 
                                 <tr className='odd:bg-white even:text-white' key={student.id}>
@@ -77,7 +82,7 @@ function AdminStudent(){
                                     <td className='border-2 py-1'>{student.StudentName}</td>
                                     <td className='border-2 py-1'>{student.Email}</td>
                                     <td className='w-[200px]'> 
-                                    <button className='bg-green-500 text-black px-2 rounded-sm mr-4'>Check</button> 
+                                    <button className='bg-green-500 text-black px-2 rounded-sm mr-4' onClick={() => checkStudent(student.id)}>Check</button> 
                                     <button className='bg-red-500 text-black px-2 rounded-sm' onClick={() => deleteStudent(student.id)}>Delete</button> 
                                     </td>
                                 </tr>);

@@ -16,3 +16,7 @@ html, body{
 .cshadow{
   box-shadow: 0 0 50px 3px rgba(142, 141, 141, 0.575);
 }
+
+input:focus::placeholder {
+  color: transparent; /* Hides the placeholder */
+}

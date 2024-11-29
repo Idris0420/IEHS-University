@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from './assets/SchoolLogo.png'
 import Nav from './Nav'
 import { useNavigate } from 'react-router-dom';
+import { collection, getDoc, getDocs, query, where, updateDoc, arrayUnion, doc, arrayRemove } from 'firebase/firestore';
+import { db } from './firebase-config';
 function Login(){
 
     const [email, setEmail] = useState("");

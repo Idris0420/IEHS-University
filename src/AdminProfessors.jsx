@@ -13,7 +13,7 @@ function AdminProfessors(){
     const [professors, setProfessors] = useState([])
     useEffect(() => {
 
-    const getProfs = async() => {
+        const getProfs = async() => {
         const data = await getDocs(profCollectionRef);
         setProfessors(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     }
@@ -75,7 +75,7 @@ function AdminProfessors(){
                                     <td className='border-2 py-1'>{prof.Email}</td>
                                     <td className='border-2 py-1'>{prof.Subject}</td>
                                     <td className='w-[200px]'> 
-                                    <button className='bg-green-500 text-black px-2 rounded-sm mr-4'>Check</button> 
+                                    <button className='bg-green-500 text-black px-2 rounded-sm mr-4' onClick={() => {navigate("/teacherProfile", { state: {id: prof.id}})}}>Check</button> 
                                     <button className='bg-red-500 text-black px-2 rounded-sm' onClick={() => deleteProf(prof.id)}>Delete</button> 
                                     </td>
                                 </tr>);
