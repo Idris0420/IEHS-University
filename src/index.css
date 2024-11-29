@@ -20,3 +20,7 @@ html, body{
 input:focus::placeholder {
   color: transparent; /* Hides the placeholder */
 }
+
+.customBorder{
+  border-radius: 10% 10% 38% 38% / 0% 0% 42% 42% ;
+}
